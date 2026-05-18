@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Foul: Premiership Football Foul Tipster</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2c3e50; /* Dark blue-grey for headings */
+            margin-bottom: 0.5rem;
+        }
+        a {
+            text-decoration: none;
+            color: #2980b9; /* Blue for links */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            background-color: #2c3e50; /* Dark blue-grey */
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 25px; /* Increased margin for wider spacing */
+        }
+        nav ul li a {
+            color: #ecf0f1; /* Light grey for nav links */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em; /* Slightly larger font */
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 5px 0; /* Add vertical padding for clickable area */
+        }
+        nav ul li a:hover {
+            color: #3498db; /* Brighter blue on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); /* Corrected Football stadium background image from Pexels */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding: 6rem 2rem; /* Consistent padding */
+            text-align: center;
+            min-height: 450px; /* Slightly increased height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: 4em; /* Larger title */
+            margin-bottom: 1.2rem;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7); /* More pronounced shadow */
+        }
+        .hero p {
+            font-size: 1.5em; /* Larger description */
+            color: #ecf0f1;
+            margin-bottom: 3rem; /* More space below description */
+            max-width: 900px; /* Wider description area */
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            line-height: 1.4; /* Better readability */
+        }
+        .btn {
+            background-color: #2980b9; /* Blue button */
+            color: #fff;
+            padding: 1.1rem 2.8rem; /* Slightly larger button */
+            text-decoration: none;
+            border-radius: 50px; /* More rounded button */
+            font-weight: bold;
+            font-size: 1.2em; /* Larger button text */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* More pronounced shadow */
+        }
+        .btn:hover {
+            background-color: #3498db; /* Lighter blue on hover */
+            transform: translateY(-3px); /* More pronounced lift effect */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            font-size: 2.2em;
+            color: #2c3e50;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: center; /* Center items when not fully spread */
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+            gap: 20px; /* Gap between items */
+            background-color: #f8f9fa; /* Light background for features */
+        }
+        .feature-item {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 280px;
+            max-width: 30%; /* Adjust for 3 columns on large screens */
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .feature-item h3 {
+            color: #2980b9; /* Match button blue */
+            margin-bottom: 1rem;
+            font-size: 1.8em;
+        }
+        .feature-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border-radius: 50%;
+            border: 3px solid #2980b9;
+        }
+
+        /* Call to Action Section (New) */
+        .cta {
+            background-color: #2c3e50; /* Dark background */
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        .cta p {
+            font-size: 1.2em;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a; /* Even darker footer */
+            color: #bbb;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 0;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #3498db;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .feature-item {
+                max-width: 45%;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .feature-item {
+                max-width: 90%;
+                margin: 1rem auto;
+            }
+            .section-title {
+                font-size: 1.8em;
+            }
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#subscribe">Subscribe</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Fast Foul: Your Edge in Premiership Football Betting</h1>
+        <p>Unlock expert insights on player fouls for smarter, more profitable bets. Get ahead of the game!</p>
+        <a href="#subscribe" class="btn">Join Fast Foul Today</a>
+    </section>
+
+    <h2 class="section-title">Why Choose Fast Foul?</h2>
+    <section id="features" class="features">
+        <div class="feature-item">
+            <img src="https://images.pexels.com/photos/5926391/pexels-photo-5926391.jpeg?auto=compress&cs=tinysrgb&w=150&h=150" alt="Data Analysis Icon">
+            <h3>Data-Driven Predictions</h3>
+            <p>Leverage advanced analytics and AI to anticipate which players are most likely to commit fouls in upcoming matches.</p>
+        </div>
+        <div class="feature-item">
+            <img src="https://images.pexels.com/photos/3642301/pexels-photo-3642301.jpeg?auto=compress&cs=tinysrgb&w=150&h=150" alt="Football Focus Icon">
+            <h3>Premiership Focus</h3>
+            <p>Dedicated coverage and expert tips exclusively for the English Premier League, giving you specialized insights.</p>
+        </div>
+        <div class="feature-item">
+            <img src="https://images.pexels.com/photos/164501/pexels-photo-164501.jpeg?auto=compress&cs=tinysrgb&w=150&h=150" alt="Growth Chart Icon">
+            <h3>Boost Your Betting Strategy</h3>
+            <p>Turn expert foul predictions into a strategic advantage, improving your success rate and maximizing your returns.</p>
+        </div>
+    </section>
+
+    <section id="subscribe" class="cta">
+        <h2>Ready to Bet Smarter?</h2>
+        <p>Join the Fast Foul community today and gain access to exclusive foul prediction tips and analysis.</p>
+        <a href="#" class="btn">Get Started Now!</a> <!-- Placeholder for actual signup link -->
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2023 Fast Foul. All rights reserved.</p>
+        <p>Contact us at <a href="mailto:info@fastfoul.com">info@fastfoul.com</a></p>
+    </footer>
+</body>
+</html>
